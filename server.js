@@ -8,12 +8,12 @@ const porta = process.env.PORT || 3333;
  * 
 Requisitos:
 
-Listar o cardápio de lanches
-Cadastrar um novo item no cardápio
-Excluir um item do cardápio
+* Listar o cardápio de lanches
+* Cadastrar um novo item no cardápio
+* Excluir um item do cardápio
 Montar um pedido
 Solicitar a entrega
-Consultar os pedidos
+* Consultar os pedidos
 
 **/
 
@@ -49,6 +49,10 @@ app.get("/pizza/cardapio", (req, res) => {
     res.send(bd);
 });
 
+app.get("/pedidos", (req, res) => {
+    res.send(pd);
+});
+
 app.get("/pizza/cardapio/:idpizza", (req, res) => {
     const idPizza = req.params.idpizza;
 
@@ -63,6 +67,12 @@ app.post("/pizza/cadastro", (req, res) => {
     const pizza = req.body;
 
     bd.push(pizza);
+    res.send({ result: "OK" });
+});
+
+app.post("/pedidos", (req, res) => {
+    const order = req.body;
+    pd.push(order);
     res.send({ result: "OK" });
 });
 
