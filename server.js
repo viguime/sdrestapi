@@ -39,6 +39,8 @@ const bd = [
     },
 ];
 
+const pd =[];
+
 app.use(express.json());
 
 app.use(express.static(process.env.PWD + "/public"));
@@ -80,6 +82,18 @@ app.put('/pizza/cardapio/:idpizza', (req, res) => {
     }
 
     return res.json(pizza);
+});
+
+app.delete('/pizza/cardapio/:idpizza', (req, res) => {
+    const idPizza = req.params.idpizza;
+
+    if (idPizza >= 0 && idPizza < bd.length) {
+        bd.splice(idPizza, 1);
+    } else {
+        res.status(404).send();
+    }
+
+    return res.status(204).json();
 });
 
 app.get("/", (req, res) => {
