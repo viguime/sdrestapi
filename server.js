@@ -2,7 +2,23 @@ const express = require("express");
 
 const app = express();
 
-const porta = process.env.PORT || 80;
+const porta = process.env.PORT || 3333;
+
+/** 
+ * 
+Requisitos:
+
+Listar o cardápio de lanches
+Cadastrar um novo item no cardápio
+Excluir um item do cardápio
+Montar um pedido
+Solicitar a entrega
+Consultar os pedidos
+
+**/
+
+
+
 
 const bd = [
     {
@@ -46,6 +62,24 @@ app.post("/pizza/cadastro", (req, res) => {
 
     bd.push(pizza);
     res.send({ result: "OK" });
+});
+
+app.put('/pizza/cardapio/:idpizza', (req, res) => {
+    const idPizza = req.params.idpizza;
+    const {nome,preco} = req.body;
+
+    const pizza = {
+        nome,
+        preco
+    };
+
+    if (idPizza >= 0 && idPizza < bd.length) {
+        bd[idPizza] = pizza;
+    } else {
+        res.status(404).send();
+    }
+
+    return res.json(pizza);
 });
 
 app.get("/", (req, res) => {
