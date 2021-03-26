@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rafaelfl/rest-sd-2020-2.git"
+    "url": "git+https://github.com/viguime/sdrestapi"
   },
-  "author": "Rafael Fernandes Lopes",
+  "author": "viguime",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/rafaelfl/rest-sd-2020-2/issues"
+    "url": "https://github.com/viguime/sdrestapi"
   },
-  "homepage": "https://github.com/rafaelfl/rest-sd-2020-2#readme",
+  "homepage": "https://github.com/viguime/sdrestapi#readme",
   "devDependencies": {
     "nodemon": "^2.0.7"
   },
