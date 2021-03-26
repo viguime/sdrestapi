@@ -74,15 +74,27 @@ app.post("/pedido/cadastro", (req, res) => {
 
     const idorder = req.body;
     const order = [];
+    var check = true;
 
     for(var i = 0; i >= 0 && i < idorder.length; i++){
+        check = bd[idorder[i]]
+        }
+    
+    if(check){
+        for(var i = 0; i >= 0 && i < idorder.length; i++){
         order[i] = bd[idorder[i]]
-    };
+        };
 
-    pd.push(order)
-    console.log(idorder)
+        pd.push(order)
+        console.log(idorder)
 
-    res.send({ result: "OK" });
+        res.send({ result: "OK" });
+
+    }else{
+        res.status(404).send();
+    }
+
+
 });
 
 app.post("/pedidos", (req, res) => {
