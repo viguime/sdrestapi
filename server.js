@@ -12,7 +12,7 @@ Requisitos:
 * Cadastrar um novo item no cardápio
 * Excluir um item do cardápio
 * Montar um pedido
-Solicitar a entrega
+* Solicitar a entrega
 * Consultar os pedidos
 
 **/
@@ -41,6 +41,8 @@ const bd = [
 
 const pd =[];
 
+const ship =[];
+
 app.use(express.json());
 
 app.use(express.static(process.env.PWD + "/public"));
@@ -51,6 +53,10 @@ app.get("/pizza/cardapio", (req, res) => {
 
 app.get("/pedidos", (req, res) => {
     res.send(pd);
+});
+
+app.get("/entregas", (req, res) => {
+    res.send(ship);
 });
 
 app.get("/pizza/cardapio/:idpizza", (req, res) => {
@@ -91,11 +97,23 @@ app.post("/pedido/cadastro", (req, res) => {
         res.send({ result: "OK" });
 
     }else{
+        res.status(400).json();
+    }
+});
+
+app.put('/pedidos/:idpedido', (req, res) => {
+    const idPedido = req.params.idpedido;
+
+    if (idPedido >= 0 && idPedido < pd.length) {
+        ship.push(pd[idPedido]);
+        pd.splice(idPedido, 1);
+    } else {
         res.status(404).send();
     }
 
-
+    return res.status(204).json();
 });
+
 
 app.post("/pedidos", (req, res) => {
     const order = req.body;
