@@ -11,7 +11,7 @@ Requisitos:
 * Listar o cardápio de lanches
 * Cadastrar um novo item no cardápio
 * Excluir um item do cardápio
-Montar um pedido
+* Montar um pedido
 Solicitar a entrega
 * Consultar os pedidos
 
@@ -67,6 +67,21 @@ app.post("/pizza/cadastro", (req, res) => {
     const pizza = req.body;
 
     bd.push(pizza);
+    res.send({ result: "OK" });
+});
+
+app.post("/pedido/cadastro", (req, res) => {
+
+    const idorder = req.body;
+    const order = [];
+
+    for(var i = 0; i >= 0 && i < idorder.length; i++){
+        order[i] = bd[idorder[i]]
+    };
+
+    pd.push(order)
+    console.log(idorder)
+
     res.send({ result: "OK" });
 });
 
