@@ -156,5 +156,5 @@ app.get("/", (req, res) => {
 });
 
 app.listen(porta, () => {
-    console.log("Servidor up and running!");
+    console.log('Express server listening on port', porta);
 });
