@@ -2,3 +2,5 @@
 
 Implementação de uma API RESTful com Node.js e o *middleware* `express`.
 
+Otávio Belfort e José Victor
+
